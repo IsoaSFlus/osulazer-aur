@@ -1,0 +1,10 @@
+#!/bin/sh
+psinfo=$(ps aux)
+cd /usr/lib/osu-lazer
+if [ "$(echo ${psinfo} | grep ss-qt5)" != "" ] ;then
+	echo "with ss"
+	exec proxychains mono 'osu!.exe'
+else
+	echo "without ss"
+	exec mono 'osu!.exe'
+fi
